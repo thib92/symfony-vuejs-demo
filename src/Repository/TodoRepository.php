@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Todo;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,32 +20,17 @@ class TodoRepository extends ServiceEntityRepository
         parent::__construct($registry, Todo::class);
     }
 
-    // /**
-    //  * @return Todo[] Returns an array of Todo objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Todo[] Returns an array of Todo objects
+      */
+    public function findByUser(User $user)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('t.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('t.deadline', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Todo
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
