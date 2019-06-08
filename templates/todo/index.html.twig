@@ -17,16 +17,11 @@
                     <tr>
                         <td>{{ todo.title }}</td>
                         <td>{{ todo.deadline }}</td>
-                        <td><a href="{{ path('delete', {'id': todo.id}) }}">Delete</a></td>
+                        <td><a v-on:click="deleteTodo({{ todo.id }})">Delete</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-
-        {{ form(todoForm) }}
-
-        ${ message }
-        <button v-on:click="reverseMessage()">Reverse message</button>
     </div>
 {% endblock %}
 

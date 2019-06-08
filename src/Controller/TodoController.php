@@ -46,10 +46,10 @@ class TodoController extends AbstractController
      */
     public function delete(Todo $todo) {
         /** @var User $user */
-        $user = $this->getUser();
+        /*$user = $this->getUser();
         if ($todo->getUser()->getId() !== $user->getId()) {
             return $this->redirectToRoute('index');
-        }
+        }*/
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($todo);

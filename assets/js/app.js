@@ -10,8 +10,10 @@ new Vue({
         }
     },
     methods: {
-        reverseMessage() {
-            this.message = this.message.split("").reverse().join("")
+        deleteTodo(id) {
+            fetch('/todo/delete/'+id).then(() => {
+                alert("Delete TODO");
+            })
         }
     }
 });
