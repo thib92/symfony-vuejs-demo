@@ -3,24 +3,34 @@
 {% block title %}Hello TodoController!{% endblock %}
 
 {% block body %}
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Deadline</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for todo in todos %}
+    <div id="page-container">
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ todo.title }}</td>
-                    <td>{{ todo.deadline }}</td>
-                    <td><a href="{{ path('delete', {'id': todo.id}) }}">Delete</a></td>
+                    <th>Title</th>
+                    <th>Deadline</th>
+                    <th>Action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for todo in todos %}
+                    <tr>
+                        <td>{{ todo.title }}</td>
+                        <td>{{ todo.deadline }}</td>
+                        <td><a href="{{ path('delete', {'id': todo.id}) }}">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    {{ form(todoForm) }}
+        {{ form(todoForm) }}
+
+        ${ message }
+        <button v-on:click="reverseMessage()">Reverse message</button>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {# Corresponds to the `name` parameter of `addEntry` in webpack.config.js #}
+    {{ encore_entry_script_tags('app') }}
 {% endblock %}
